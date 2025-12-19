@@ -7,7 +7,7 @@ function Hero() {
          <img className={` mx-auto  `} src={banner} alt="" />
          <div className='absolute flex flex-col inset-0 items-center justify-center w-screen'>
             <div>
-                <h3 className='text-purple-900 font-bold my-3 flex justify-center text-6xl'>Velvet <span className='text-green-900'>& Vines</span></h3>
+                <h3 className='text-purple-900 font-bold my-3 flex justify-center text-6xl gap-3'>Velvet <span className='text-green-900'> & Vines</span></h3>
                 <p className='text-gray-300 text-2xl'>Discover premium fashion that defines modern luxury and timeless elegance</p>
             </div>
             <div className='mx-auto mt-4'>

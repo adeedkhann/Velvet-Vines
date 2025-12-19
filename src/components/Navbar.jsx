@@ -6,7 +6,7 @@ import logo from '../assets/logovnv.png'
 function Navbar() {
     
   return (
-    <nav className="flex w-screen items-center justify-between h-12">
+    <nav className="flex  w-screen items-center justify-between h-12">
         <span className=""><img src={logo} className="h-12 w-50" alt="" /></span>
         <ul className="flex ">
             <li className="ml-10 flex hover:text-gray-500 items-center">Shop <span className=""><MdOutlineKeyboardArrowDown/></span></li>
