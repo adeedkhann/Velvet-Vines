@@ -39,7 +39,7 @@ function Footer() {
     ]
 
   return (
-    <div className="bg-neutral-900  text-white flex flex-col ">
+    <div className="bg-neutral-900 text-white flex flex-col ">
         <div className="mx-auto h-60">
             <h2 className=" text-3xl mx-14 mt-13 mb-5 items-center justify-center flex">Stay in the Loop</h2>
             <p className="text-gray-400 mb-5 items-center justify-center flex">Subscribe to get exclusive offers and style updates</p>
@@ -54,7 +54,7 @@ function Footer() {
                     <li className="hover:text-white">{item.item1}</li>
                     <li className="hover:text-white">{item.item2}</li>
                     <li className="hover:text-white">{item.item3}</li>
-                    <li className="hover:text-white">{item.item4}</li>
+                    <li className="hover:text-white">{item.item4}</li>3
                     <li className="hover:text-white">{item.item5}</li>
                 </ul>
             </div>
@@ -63,9 +63,10 @@ function Footer() {
             
         </div>
         <hr className="text-gray-500"   />
-        <div className="flex justify-between mx-5 h-20 mb-10 items-center">
+        <div className="flex justify-between mx-5 h-20 items-center">
             <div className="text-xl flex items-center gap-1 text-gray-400"><LuCopyright/>2025 Velvet&Vines. All rights reserved.</div>
-            <div><span className="text-gray-400 mr-2">We accept :</span>
+            <div>
+            <span className="text-gray-400 mr-2">We accept :</span>
             <span className="border mx-1 px-2 py-1 text-gray-400 rounded-lg text-sm ">VISA</span> 
             <span className="border mx-1 px-2 py-1 text-gray-400 rounded-lg text-sm ">MC</span> 
             <span className="border mx-1 px-2 py-1 text-gray-400 rounded-lg text-sm ">AMEX</span> 
