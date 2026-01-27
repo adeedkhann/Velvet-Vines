@@ -54,7 +54,7 @@ function Footer() {
                     <li className="hover:text-white">{item.item1}</li>
                     <li className="hover:text-white">{item.item2}</li>
                     <li className="hover:text-white">{item.item3}</li>
-                    <li className="hover:text-white">{item.item4}</li>3
+                    <li className="hover:text-white">{item.item4}</li>
                     <li className="hover:text-white">{item.item5}</li>
                 </ul>
             </div>

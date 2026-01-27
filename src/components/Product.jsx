@@ -1,29 +1,32 @@
 import { useEffect, useState } from 'react';
-
+import { useParams } from 'react-router';
 import { CiCirclePlus ,CiCircleMinus } from "react-icons/ci";
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import axios from 'axios';
 
 function Product() {
-
-    const id = useSelector((state)=>state.product.id)
+    const {id : curId} = useParams()
+    const reduxId = useSelector((state)=>state.product.id)
+    const mainId = curId || reduxId
     const [Quantity , setQuantity] = useState(1)
     const [item , setItem] = useState(null)
     const [activeImg , setActiveImg] = useState("")
+    
     useEffect(()=>{
-        if(id){
+        if(mainId){
             ;(async ()=>{
                 try {
-                    const response = await axios.get(`https://api.escuelajs.co/api/v1/products/${id}`)
+                    const response = await axios.get(`https://api.escuelajs.co/api/v1/products/${mainId}`)
                     setItem(response.data)
                     setActiveImg(response.data.images[0])
+                    
                 } catch (error) {
                     console.log(error)
                 }
             })()
         }
         
-    },[id])
+    },[mainId])
 
     if (!item) {
         return <div className="h-screen flex justify-center items-center text-2xl">Loading Product...</div>;
@@ -33,12 +36,10 @@ function Product() {
   return (
     <div>
         
-        <div className='flex flex-col md:flex-row justify-center items-center '>
-            <div className='overflow-hidden  rounded-2xl ml-10'><img className=' mt-10 w-300 rounded-2xl' src={activeImg} alt="" />
+        <div className='flex flex-col md:flex-row justify-center items-center'>
+            <div className='overflow-hidden  rounded-2xl ml-10'><img className=' mt-15 w-300 rounded-2xl' src={activeImg} alt="" />
             <div className='flex gap-2 mt-3 mb-2'>
-                {/* <img className='w-30 rounded-xl' onClick={()=>setActiveImg(item.images[0])} src={item.images[0]} alt="" />
-            <img className='w-30 rounded-xl' onClick={()=>setActiveImg(item.images[1])} src={item.images[1]} alt="" />
-            <img className='w-30 rounded-xl' onClick={()=>setActiveImg(item.images[2])} src={item.images[2]} alt="" /> */}
+                
             {item.images.map((img)=>{
                 return(
                     <img className={`w-30 rounded-xl ${activeImg==img? "border":"opacity-50 "}`} onClick={()=>setActiveImg(img)} src={img} alt="" />
