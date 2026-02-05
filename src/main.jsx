@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 
-import { Provider, useSelector } from 'react-redux'
+import { Provider} from 'react-redux'
 import { store } from './app/store.js'
 import { createBrowserRouter, createRoutesFromElements, RouterProvider ,Route } from 'react-router'
 import Layout from './components/Layout.jsx'
