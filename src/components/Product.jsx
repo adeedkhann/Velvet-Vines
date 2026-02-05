@@ -3,6 +3,8 @@ import { useParams } from 'react-router';
 import { CiCirclePlus ,CiCircleMinus } from "react-icons/ci";
 import {  useSelector } from 'react-redux';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../features.js/cartSlice';
 
 function Product() {
     const {id : curId} = useParams()
@@ -11,7 +13,10 @@ function Product() {
     const [Quantity , setQuantity] = useState(1)
     const [item , setItem] = useState(null)
     const [activeImg , setActiveImg] = useState("")
-    
+    const dispatch = useDispatch()
+    const  [addedToCart , setAddedToCart]=useState(false)
+
+
     useEffect(()=>{
         if(mainId){
             ;(async ()=>{
@@ -27,6 +32,17 @@ function Product() {
         }
         
     },[mainId])
+
+    const handleAddToCart = ()=>{
+        dispatch(addToCart({
+            id :item.id,
+            title : item.title,
+            price : item.price,
+            image : item.images[0],
+            quantity : Quantity,
+        }))
+        setAddedToCart(true)
+    }
 
     if (!item) {
         return <div className="h-screen flex justify-center items-center text-2xl">Loading Product...</div>;
@@ -88,7 +104,7 @@ function Product() {
                     <button className='h-8 w-8 rounded-full text-4xl' onClick={()=>setQuantity(Quantity+1)} ><CiCirclePlus/></button></div>
                 </div>
                 <div className=' gap-3 mt-1 mb-5 flex'>
-                    <button className='bg-black text-white font-semibold w-full rounded-xl py-2.5 text-xl hover:bg-slate-500  '>Add to Cart</button>
+                    <button onClick={handleAddToCart} className='bg-black text-white font-semibold w-full rounded-xl py-2.5 text-xl hover:bg-slate-500  ' >{addedToCart?"Added to cart":"Add to Cart"}</button>
                     <button className='font-semibold w-full rounded-xl py-2.5 text-xl border hover:bg-black hover:text-white'>Add to Wishlist</button>
                 </div>
             </div>

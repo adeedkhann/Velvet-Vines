@@ -9,6 +9,8 @@ import Layout from './components/Layout.jsx'
 import Product from './components/Product.jsx'
 import Home from './components/Home.jsx'
 import Cart from './components/Cart.jsx'
+import NewArrivals from './components/NewArrivals.jsx'
+import Sale from './components/Sale.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +18,9 @@ const router = createBrowserRouter(
         <Route index element={<Home />} />
         <Route path='cart' element={<Cart/>}/>
         <Route path="product/:id" element={<Product />} />
+        <Route path="newArr" element={<NewArrivals/>}/>
+        <Route path="sale" element={<Sale/>}/>
+
     </Route>
   )
 )

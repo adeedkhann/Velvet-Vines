@@ -18,7 +18,7 @@ function Card({item}){
             <div className=' w-35 flex group flex-col' onClick={()=>dispatch(setId(item.id))}>
                 <Link to={`/product/${item.id}`}>
                 <div className='  rounded-lg relative overflow-hidden '><img onClick={()=>{dispatch(setId(item.id))}} className='group-hover:scale-110 hover:transition-transform duration-1000  rounded-2xl' src={item.images} alt="img loading..." />
-                <div className='absolute z-10 inset-0 text-2xl opacity-0 group-hover:opacity-100 flex '><button className='mx-auto my-25 items-center justify-center gap-2 flex text-sm hover:bg-slate-500 hover:text-white bg-white h-8 w-30 rounded-full text'><FiShoppingBag/>Quick Add</button></div>
+                <div className='absolute z-10 inset-0 text-2xl opacity-0 group-hover:opacity-100 flex '><button className='mx-auto my-25 items-center justify-center gap-2 flex text-sm hover:bg-slate-500 hover:text-white bg-white h-8 w-30 rounded-full text'><FiShoppingBag/>View</button></div>
                 </div>
                 <h2 className='my-2 font-medium text-sm ml-2'>{item.title.slice(0, 30)}...</h2>
                 <p className='ml-2 text-black'> $ {item.price}</p>
@@ -39,7 +39,7 @@ const [goods , setGoods] = useState([])
     useEffect(()=>{
            try {
              ;(async()=>{//semi colon purana code end krne ke liye production code me safety purpose
-                 const items = await axios.get("https://api.escuelajs.co/api/v1/products?offset=0&limit=21")
+                 const items = await axios.get("https://api.escuelajs.co/api/v1/products?offset=0&limit=50")
                     setGoods(items.data)
                    
                

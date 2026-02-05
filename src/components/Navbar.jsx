@@ -4,16 +4,19 @@ import { MdOutlineKeyboardArrowDown ,MdOutlineKeyboardArrowUp  } from "react-ico
 import { IoIosSearch } from "react-icons/io";
 import logo from '../assets/logovnv.png'
 import { useState } from "react";
+import { Link } from "react-router";
+
+
 function Navbar() {
     
   const [searchActive  , setSearchActive] = useState(false)
   
   return (
-    <nav className="flex fixed z-50 bg-white w-screen items-center justify-between h-12">
+    <nav className="flex fixed z-50 bg-white w-screen items-center justify-between h-15">
         <span className=""><img src={logo} className="h-12 w-50" alt="" /></span>
         <ul className="flex ">
-            <li className="ml-10 flex hover:text-gray-500 items-center cursor-pointer">Shop <span className=""><MdOutlineKeyboardArrowDown/></span></li>
-            <li className="ml-10 hover:text-gray-500 cursor-pointer">New Arrivals</li>
+            <Link to='/'> <li className="ml-10 flex hover:text-gray-500 items-center cursor-pointer">Home </li></Link>
+            <Link to='newArr'><li className="ml-10 hover:text-gray-500 cursor-pointer">New Arrivals</li></Link>
             <li className="ml-10 hover:text-gray-500 cursor-pointer">Sale</li>
             <li className="ml-10 hover:text-gray-500 cursor-pointer">About</li>
         </ul>
@@ -41,7 +44,7 @@ function Navbar() {
         <IoIosSearch/>
       </button>
             <li className="mr-7 border rounded-full p-3 cursor-pointer bg-slate-500 text-white"><FaUser/></li>
-            <li className="mr-10 p-3 border rounded-full cursor-pointer"><FiShoppingBag/></li>
+            <Link to='./cart'>  <li className="mr-10 p-3 border rounded-full cursor-pointer"><FiShoppingBag/></li></Link>
         </ul>
     </nav>
   )
