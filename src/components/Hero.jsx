@@ -4,7 +4,7 @@ function Hero() {
   return (
     <div className={`pt-10`}>
        <div className='relative'>
-         <img className={` mx-auto `} src={banner} alt="" />
+         <img className={``} src={banner} alt="" />
          <div className='absolute flex flex-col inset-0 items-center justify-center w-screen'>
             <div>
                 <h3 className='text-purple-900 font-bold my-3 flex justify-center text-6xl gap-3'>Velvet <span className='text-green-900'> & Vines</span></h3>
