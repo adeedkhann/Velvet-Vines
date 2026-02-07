@@ -42,7 +42,7 @@ function Cart() {
                         </button> 
                         {item.quantity} 
                         <button className='cursor-pointer w-4' onClick={()=>dispatch(incQuantity(item.id))}><CiCirclePlus/></button></span>
-                        <span className='absolute left-98 text-xl'> $ {item.price}</span>
+                        <span className='absolute left-98 text-xl'> ${item.price}</span>
                     </div>
                     
                     

@@ -1,23 +1,22 @@
-
-import { FiShoppingBag } from "react-icons/fi";
-import { BsArrowRight } from 'react-icons/bs'
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { setId } from "../features.js/productSlice";
+import axios from 'axios';
 import { Link } from "react-router";
 
-
+import { FiShoppingBag } from 'react-icons/fi';
 
 
 function Card({item}){
 
        const dispatch = useDispatch()
 
+       
+
         return(
-            <div className=' w-40 flex group flex-col' onClick={()=>dispatch(setId(item.id))}>
+            <div className=' w-50 flex group flex-col' onClick={()=>dispatch(setId(item.id))}>
                 <Link to={`/product/${item.id}`}>
-                <div className='  rounded-lg relative overflow-hidden '><img className='group-hover:scale-110 hover:transition-transform duration-1000  rounded-2xl' src={item.images} alt="img loading..." />
+                <div className='  rounded-lg relative overflow-hidden '><img className='group-hover:scale-110 hover:transition-transform duration-1000  rounded-2xl' src={item.images[0]} alt="img loading..." />
                 <div className='absolute z-10 inset-0 text-2xl opacity-0 group-hover:opacity-100 flex '><button className='mx-auto my-25 items-center justify-center gap-2 flex text-sm hover:bg-slate-500 hover:text-white bg-white h-8 w-30 rounded-full text'><FiShoppingBag/>View</button></div>
                 </div>
                 <h2 className='my-2 font-medium text-sm ml-2'>{item.title.slice(0, 30)}...</h2>
@@ -31,28 +30,30 @@ function Card({item}){
             </div>
         )
     }
-function NewArrivals() {
 
-const [goods , setGoods] = useState([])
 
+function ShopByPage() {
+    
+    const category = useSelector((state)=>state.Category.Category)
+    const [goods , setGoods] = useState([])
 
     useEffect(()=>{
-           try {
-             ;(async()=>{//semi colon purana code end krne ke liye production code me safety purpose
-                 const items = await axios.get("https://api.escuelajs.co/api/v1/products?offset=0&limit=42")
-                    setGoods(items.data)
-                   
-               
-             })()
-           } catch (error) {
+        
+        try {
+            
+            ;(async()=>{
+                const items = await axios.get(`https://api.escuelajs.co/api/v1/products/?categorySlug=${category}`)
+                setGoods(items.data)
+            })()
+        } catch (error) {
             console.log(error)
-           }
-       },[])
-       
+        }
+
+    },[category])
 
   return (
-    <div className='flex flex-col mb-10'>
-        <div className='flex justify-between'><span className='my-5 ml-5 text-3xl  font-semibold'>New Arrivals</span> <span className='mr-13 text-xl hover:text-gray-800 flex items-center gap-2 my-auto'>view all<BsArrowRight/></span></div>
+    <div className='pt-20 flex flex-col justify-center items-center'>
+        <h1 className='text-5xl py-10'>Shopping By {category}</h1>
         <div className='flex flex-wrap gap-10 justify-center'>
         {goods.map((product)=>(
             <Card key={product.id} item={product} />
@@ -61,9 +62,8 @@ const [goods , setGoods] = useState([])
             
         )}
         </div>
-        
     </div>
   )
 }
 
-export default NewArrivals
+export default ShopByPage
