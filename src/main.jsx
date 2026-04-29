@@ -13,6 +13,7 @@ import NewArrivals from './components/NewArrivals.jsx'
 import Sale from './components/Sale.jsx'
 import ShopByCat from './components/ShopByCat.jsx'
 import ShopByPage from './components/ShopByPage.jsx'
+import Register from './components/Auth/Register.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,8 +24,9 @@ const router = createBrowserRouter(
         <Route path="newArr" element={<NewArrivals/>}/>
         <Route path="sale" element={<Sale/>}/>
         <Route path='/shopcat' element={<ShopByPage/>}/>
-
+        <Route path='/register' element={<Register/>}/>
     </Route>
+    
   )
 )
 

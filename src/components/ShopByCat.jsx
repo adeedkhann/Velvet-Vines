@@ -38,19 +38,19 @@ function ShopByCat() {
   ];
   return (
     <div>
-       <section className="pb-16 py-10 px-6 lg:px-8">
-      <div className="max-w-[1440px] mx-auto">
-        <h2 className="mb-10 text-center text-5xl">Shop by Category</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[180px] md:auto-rows-[200px]">
+       <section className="pb-10 sm:pb-12 md:pb-16 lg:pb-20 py-8 sm:py-10 md:py-12 px-3 sm:px-6 md:px-8 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="mb-8 sm:mb-10 md:mb-12 text-center text-3xl sm:text-4xl md:text-5xl font-bold animate-fade-in">Shop by Category</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4 auto-rows-[140px] sm:auto-rows-[180px] md:auto-rows-[200px] lg:auto-rows-[240px]">
   {categories.map((category) => (
     
     <Link 
       key={category.name} 
       to={'/shopcat'} 
-      className={category.span}
+      className={category.span + ' transform transition-all duration-300 hover:scale-105'}
       onClick={() => dispatch(updateCategory(category.name))}
     >
-      <div className="group relative h-full w-full overflow-hidden rounded-xl cursor-pointer shadow-md hover:shadow-xl transition-all duration-300">
+      <div className="group relative h-full w-full overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500">
         <img 
           src={category.image}
           alt={category.name}
@@ -58,10 +58,10 @@ function ShopByCat() {
         />
         
         
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-        <div className="absolute bottom-4 left-4 right-4">
-          <h3 className="text-white text-lg md:text-xl capitalize font-semibold">{category.name}</h3>
-          <p className="text-white/80 text-xs md:text-sm mt-0.5">Explore Collection</p>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent group-hover:from-black/90 transition-all duration-300" />
+        <div className="absolute bottom-2 sm:bottom-3 md:bottom-4 left-2 sm:left-3 md:left-4 right-2 sm:right-3 md:right-4 transform group-hover:translate-y-0 transition-transform duration-300">
+          <h3 className="text-white text-xs sm:text-base md:text-lg lg:text-xl capitalize font-semibold">{category.name}</h3>
+          <p className="text-white/80 text-xs md:text-sm mt-0.5 group-hover:block hidden transition-all duration-300">Explore Collection</p>
         </div>
       </div>
     </Link>
